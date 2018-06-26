@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EB72606A20E28CC7003FEEE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB72606920E28CC7003FEEE1 /* AppDelegate.swift */; };
-		EB72606C20E28CC7003FEEE1 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = EB72606B20E28CC7003FEEE1 /* art.scnassets */; };
 		EB72606E20E28CC7003FEEE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB72606D20E28CC7003FEEE1 /* ViewController.swift */; };
 		EB72607120E28CC7003FEEE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB72606F20E28CC7003FEEE1 /* Main.storyboard */; };
 		EB72607320E28CC8003FEEE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB72607220E28CC8003FEEE1 /* Assets.xcassets */; };
@@ -18,7 +17,6 @@
 /* Begin PBXFileReference section */
 		EB72606620E28CC7003FEEE1 /* Drawing In 3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drawing In 3D.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB72606920E28CC7003FEEE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EB72606B20E28CC7003FEEE1 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		EB72606D20E28CC7003FEEE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB72607020E28CC7003FEEE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EB72607220E28CC8003FEEE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				EB72606920E28CC7003FEEE1 /* AppDelegate.swift */,
-				EB72606B20E28CC7003FEEE1 /* art.scnassets */,
 				EB72606D20E28CC7003FEEE1 /* ViewController.swift */,
 				EB72606F20E28CC7003FEEE1 /* Main.storyboard */,
 				EB72607220E28CC8003FEEE1 /* Assets.xcassets */,
@@ -125,7 +122,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB72606C20E28CC7003FEEE1 /* art.scnassets in Resources */,
 				EB72607620E28CC8003FEEE1 /* LaunchScreen.storyboard in Resources */,
 				EB72607320E28CC8003FEEE1 /* Assets.xcassets in Resources */,
 				EB72607120E28CC7003FEEE1 /* Main.storyboard in Resources */,
