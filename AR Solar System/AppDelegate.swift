@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Drawing In 3D
+//  AR Solar System
 //
 //  Created by Justin Vallely on 6/26/18.
 //  Copyright © 2018 Pajama Donkey. All rights reserved.

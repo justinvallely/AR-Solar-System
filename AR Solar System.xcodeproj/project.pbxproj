@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EB72606620E28CC7003FEEE1 /* Drawing In 3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drawing In 3D.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB72606620E28CC7003FEEE1 /* AR Solar System.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR Solar System.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB72606920E28CC7003FEEE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB72606D20E28CC7003FEEE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EB72607020E28CC7003FEEE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		EB72605D20E28CC7003FEEE1 = {
 			isa = PBXGroup;
 			children = (
-				EB72606820E28CC7003FEEE1 /* Drawing In 3D */,
+				EB72606820E28CC7003FEEE1 /* AR Solar System */,
 				EB72606720E28CC7003FEEE1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,12 +46,12 @@
 		EB72606720E28CC7003FEEE1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EB72606620E28CC7003FEEE1 /* Drawing In 3D.app */,
+				EB72606620E28CC7003FEEE1 /* AR Solar System.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EB72606820E28CC7003FEEE1 /* Drawing In 3D */ = {
+		EB72606820E28CC7003FEEE1 /* AR Solar System */ = {
 			isa = PBXGroup;
 			children = (
 				EB72606920E28CC7003FEEE1 /* AppDelegate.swift */,
@@ -61,15 +61,15 @@
 				EB72607420E28CC8003FEEE1 /* LaunchScreen.storyboard */,
 				EB72607720E28CC8003FEEE1 /* Info.plist */,
 			);
-			path = "Drawing In 3D";
+			path = "AR Solar System";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EB72606520E28CC7003FEEE1 /* Drawing In 3D */ = {
+		EB72606520E28CC7003FEEE1 /* AR Solar System */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EB72607A20E28CC8003FEEE1 /* Build configuration list for PBXNativeTarget "Drawing In 3D" */;
+			buildConfigurationList = EB72607A20E28CC8003FEEE1 /* Build configuration list for PBXNativeTarget "AR Solar System" */;
 			buildPhases = (
 				EB72606220E28CC7003FEEE1 /* Sources */,
 				EB72606320E28CC7003FEEE1 /* Frameworks */,
@@ -79,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = "Drawing In 3D";
+			name = "AR Solar System";
 			productName = "Drawing In 3D";
-			productReference = EB72606620E28CC7003FEEE1 /* Drawing In 3D.app */;
+			productReference = EB72606620E28CC7003FEEE1 /* AR Solar System.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -99,7 +99,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EB72606120E28CC7003FEEE1 /* Build configuration list for PBXProject "Drawing In 3D" */;
+			buildConfigurationList = EB72606120E28CC7003FEEE1 /* Build configuration list for PBXProject "AR Solar System" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EB72606520E28CC7003FEEE1 /* Drawing In 3D */,
+				EB72606520E28CC7003FEEE1 /* AR Solar System */,
 			);
 		};
 /* End PBXProject section */
@@ -282,12 +282,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HF5665FB4Z;
-				INFOPLIST_FILE = "Drawing In 3D/Info.plist";
+				INFOPLIST_FILE = "AR Solar System/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pajamadonkey.Drawing-In-3D";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pajamadonkey.AR-Solar-System";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -300,12 +300,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HF5665FB4Z;
-				INFOPLIST_FILE = "Drawing In 3D/Info.plist";
+				INFOPLIST_FILE = "AR Solar System/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.pajamadonkey.Drawing-In-3D";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pajamadonkey.AR-Solar-System";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -315,7 +315,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EB72606120E28CC7003FEEE1 /* Build configuration list for PBXProject "Drawing In 3D" */ = {
+		EB72606120E28CC7003FEEE1 /* Build configuration list for PBXProject "AR Solar System" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB72607820E28CC8003FEEE1 /* Debug */,
@@ -324,7 +324,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EB72607A20E28CC8003FEEE1 /* Build configuration list for PBXNativeTarget "Drawing In 3D" */ = {
+		EB72607A20E28CC8003FEEE1 /* Build configuration list for PBXNativeTarget "AR Solar System" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB72607B20E28CC8003FEEE1 /* Debug */,
