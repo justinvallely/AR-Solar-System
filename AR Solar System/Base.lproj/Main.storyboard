@@ -6,14 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="Drawing_In_3D" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="AR_Solar_System" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TcP-8h-Y0o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -21,28 +21,17 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fFc-Ax-RHB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </arscnView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQT-fL-nD9">
-                                <rect key="frame" x="155" y="602" width="65" height="45"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="HmU-dh-qdC"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="Ssx-Ma-OBT"/>
-                                </constraints>
-                                <state key="normal" title="Draw"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fFc-Ax-RHB" firstAttribute="top" secondItem="TcP-8h-Y0o" secondAttribute="top" id="BgD-TD-1J6"/>
-                            <constraint firstItem="QQT-fL-nD9" firstAttribute="centerX" secondItem="TcP-8h-Y0o" secondAttribute="centerX" id="J3N-rj-df1"/>
                             <constraint firstItem="fFc-Ax-RHB" firstAttribute="leading" secondItem="TcP-8h-Y0o" secondAttribute="leading" id="Kc2-gK-Ebo"/>
                             <constraint firstAttribute="bottom" secondItem="fFc-Ax-RHB" secondAttribute="bottom" id="LOn-y7-sAM"/>
                             <constraint firstAttribute="trailing" secondItem="fFc-Ax-RHB" secondAttribute="trailing" id="aNN-KZ-nGh"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="QQT-fL-nD9" secondAttribute="bottom" constant="20" id="kFl-Yr-x6c"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="R0z-mQ-UuH"/>
                     </view>
                     <connections>
-                        <outlet property="drawButton" destination="QQT-fL-nD9" id="M98-7u-OPx"/>
                         <outlet property="sceneView" destination="fFc-Ax-RHB" id="b6J-7m-7if"/>
                     </connections>
                 </viewController>
