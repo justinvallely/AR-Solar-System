@@ -17,8 +17,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
-        sceneView.showsStatistics = true
+//        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
+//        sceneView.showsStatistics = true
         sceneView.autoenablesDefaultLighting = true
         sceneView.session.run(configuration)
     }
@@ -26,15 +26,15 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        let sunNode =  planet(radius: 0.35, diffuse: #imageLiteral(resourceName: "sun"), specular: nil, emission: nil, normal: nil, position: SCNVector3(0, 0, 0))
-        let mercuryNode = planet(radius: 0.1, diffuse: #imageLiteral(resourceName: "mercury"), specular: nil, emission: nil, normal: nil, position: SCNVector3(0.333, 0, 0))
-        let venusNode = planet(radius: 0.1, diffuse: #imageLiteral(resourceName: "venus"), specular: nil, emission: #imageLiteral(resourceName: "venus atmosphere"), normal: nil, position: SCNVector3(0.666, 0, 0))
-        let earthNode = planet(radius: 0.2, diffuse: #imageLiteral(resourceName: "earth daymap"), specular: #imageLiteral(resourceName: "earth specular"), emission: #imageLiteral(resourceName: "earth clouds"), normal: #imageLiteral(resourceName: "earth normal"), position: SCNVector3(1, 0, 0))
-        let marsNode = planet(radius: 0.2, diffuse: #imageLiteral(resourceName: "mars"), specular: nil, emission: nil, normal: nil, position: SCNVector3(1.333, 0, 0))
-        let jupiterNode = planet(radius: 0.2, diffuse: #imageLiteral(resourceName: "jupiter"), specular: nil, emission: nil, normal: nil, position: SCNVector3(1.666, 0, 0))
-        let saturnNode = planet(radius: 0.2, diffuse: #imageLiteral(resourceName: "saturn"), specular: nil, emission: nil, normal: nil, position: SCNVector3(2, 0, 0))
-        let uranusNode = planet(radius: 0.2, diffuse: #imageLiteral(resourceName: "uranus"), specular: nil, emission: nil, normal: nil, position: SCNVector3(2.333, 0, 0))
-        let neptuneNode = planet(radius: 0.2, diffuse: #imageLiteral(resourceName: "nepture"), specular: nil, emission: nil, normal: nil, position: SCNVector3(2.666, 0, 0))
+        let sunNode =  planet(radius: 0.5, diffuse: #imageLiteral(resourceName: "sun"), specular: nil, emission: nil, normal: nil, position: SCNVector3(0, 0, 0))
+        let mercuryNode = planet(radius: 0.1, diffuse: #imageLiteral(resourceName: "mercury"), specular: nil, emission: nil, normal: nil, position: SCNVector3(sunNode.position.x + 1, 0, 0))
+        let venusNode = planet(radius: 0.2, diffuse: #imageLiteral(resourceName: "venus"), specular: nil, emission: #imageLiteral(resourceName: "venus atmosphere"), normal: nil, position: SCNVector3(mercuryNode.position.x + 0.5, 0, 0))
+        let earthNode = planet(radius: 0.2, diffuse: #imageLiteral(resourceName: "earth daymap"), specular: #imageLiteral(resourceName: "earth specular"), emission: #imageLiteral(resourceName: "earth clouds"), normal: #imageLiteral(resourceName: "earth normal"), position: SCNVector3(venusNode.position.x + 0.6, 0, 0))
+        let marsNode = planet(radius: 0.15, diffuse: #imageLiteral(resourceName: "mars"), specular: nil, emission: nil, normal: nil, position: SCNVector3(earthNode.position.x + 0.6, 0, 0))
+        let jupiterNode = planet(radius: 0.4, diffuse: #imageLiteral(resourceName: "jupiter"), specular: nil, emission: nil, normal: nil, position: SCNVector3(marsNode.position.x + 0.7, 0, 0))
+        let saturnNode = planet(radius: 0.4, diffuse: #imageLiteral(resourceName: "saturn"), specular: nil, emission: nil, normal: nil, position: SCNVector3(jupiterNode.position.x + 1, 0, 0))
+        let uranusNode = planet(radius: 0.3, diffuse: #imageLiteral(resourceName: "uranus"), specular: nil, emission: nil, normal: nil, position: SCNVector3(saturnNode.position.x + 1, 0, 0))
+        let neptuneNode = planet(radius: 0.3, diffuse: #imageLiteral(resourceName: "nepture"), specular: nil, emission: nil, normal: nil, position: SCNVector3(uranusNode.position.x + 1, 0, 0))
         let moonNode = planet(radius: 0.05, diffuse: #imageLiteral(resourceName: "moon"), specular: nil, emission: nil, normal: nil, position: SCNVector3(0.3, 0, 0))
 
         let mercuryParent = SCNNode()
@@ -93,12 +93,24 @@ class ViewController: UIViewController {
         sceneView.scene.rootNode.addChildNode(neptuneParent)
 
         sunNode.runAction(rotation(time: 8))
+        mercuryNode.runAction(rotation(time: 10))
+        venusNode.runAction(rotation(time: 9))
         earthNode.runAction(rotation(time: 8))
         moonNode.runAction(rotation(time: 5))
-        venusNode.runAction(rotation(time: 10))
+        marsNode.runAction(rotation(time: 8))
+        jupiterNode.runAction(rotation(time: 10))
+        saturnNode.runAction(rotation(time: 5))
+        uranusNode.runAction(rotation(time: 6))
+        neptuneNode.runAction(rotation(time: 7))
 
-        earthParent.runAction(rotation(time: 14))
-        venusParent.runAction(rotation(time: 8))
+        mercuryParent.runAction(rotation(time: 100))
+        venusParent.runAction(rotation(time: 60))
+        earthParent.runAction(rotation(time: 120))
+        marsParent.runAction(rotation(time: 110))
+        jupiterParent.runAction(rotation(time: 90))
+        saturnParent.runAction(rotation(time: 70))
+        uranusParent.runAction(rotation(time: 80))
+        neptuneParent.runAction(rotation(time: 40))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
