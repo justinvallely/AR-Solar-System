@@ -11,73 +11,125 @@ import ARKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var speedSlider: UISlider!
     @IBOutlet var sceneView: ARSCNView!
+
     let configuration = ARWorldTrackingConfiguration()
+
+    let mercuryParent = SCNNode()
+    let venusParent = SCNNode()
+    let earthParent = SCNNode()
+    let marsParent = SCNNode()
+    let jupiterParent = SCNNode()
+    let saturnParent = SCNNode()
+    let uranusParent = SCNNode()
+    let neptuneParent = SCNNode()
+    let moonParent = SCNNode()
+
+    var sunNode = SCNNode()
+    var mercuryNode = SCNNode()
+    var venusNode = SCNNode()
+    var earthNode = SCNNode()
+    var marsNode = SCNNode()
+    var jupiterNode = SCNNode()
+    var saturnNode = SCNNode()
+    var uranusNode = SCNNode()
+    var neptuneNode = SCNNode()
+    var moonNode = SCNNode()
+
+    var allParents = [SCNNode]()
+    var allPlanets = [SCNNode]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        sceneView.debugOptions = [ARSCNDebugOptions.showWorldOrigin, ARSCNDebugOptions.showFeaturePoints]
-//        sceneView.showsStatistics = true
         sceneView.autoenablesDefaultLighting = true
         sceneView.session.run(configuration)
+
+        speedSlider.setValue(UserDefaults.standard.float(forKey: "savedSliderSpeedValue"), animated: false)
+
+        allParents.append(mercuryParent)
+        allParents.append(venusParent)
+        allParents.append(earthParent)
+        allParents.append(marsParent)
+        allParents.append(jupiterParent)
+        allParents.append(saturnParent)
+        allParents.append(uranusParent)
+        allParents.append(neptuneParent)
+
+        allPlanets.append(mercuryNode)
+        allPlanets.append(venusNode)
+        allPlanets.append(earthNode)
+        allPlanets.append(marsNode)
+        allPlanets.append(jupiterNode)
+        allPlanets.append(saturnNode)
+        allPlanets.append(uranusNode)
+        allPlanets.append(neptuneNode)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        let sunNode =  planet(radius: 0.5, diffuse: #imageLiteral(resourceName: "sun"), specular: nil, emission: nil, normal: nil, position: SCNVector3(0, 0, 0))
-        let mercuryNode = planet(radius: 0.1, diffuse: #imageLiteral(resourceName: "mercury"), specular: nil, emission: nil, normal: nil, position: SCNVector3(sunNode.position.x + 1, 0, 0))
-        let venusNode = planet(radius: 0.2, diffuse: #imageLiteral(resourceName: "venus"), specular: nil, emission: #imageLiteral(resourceName: "venus atmosphere"), normal: nil, position: SCNVector3(mercuryNode.position.x + 0.5, 0, 0))
-        let earthNode = planet(radius: 0.2, diffuse: #imageLiteral(resourceName: "earth daymap"), specular: #imageLiteral(resourceName: "earth specular"), emission: #imageLiteral(resourceName: "earth clouds"), normal: #imageLiteral(resourceName: "earth normal"), position: SCNVector3(venusNode.position.x + 0.6, 0, 0))
-        let marsNode = planet(radius: 0.15, diffuse: #imageLiteral(resourceName: "mars"), specular: nil, emission: nil, normal: nil, position: SCNVector3(earthNode.position.x + 0.6, 0, 0))
-        let jupiterNode = planet(radius: 0.4, diffuse: #imageLiteral(resourceName: "jupiter"), specular: nil, emission: nil, normal: nil, position: SCNVector3(marsNode.position.x + 0.7, 0, 0))
-        let saturnNode = planet(radius: 0.4, diffuse: #imageLiteral(resourceName: "saturn"), specular: nil, emission: nil, normal: nil, position: SCNVector3(jupiterNode.position.x + 1, 0, 0))
-        let uranusNode = planet(radius: 0.3, diffuse: #imageLiteral(resourceName: "uranus"), specular: nil, emission: nil, normal: nil, position: SCNVector3(saturnNode.position.x + 1, 0, 0))
-        let neptuneNode = planet(radius: 0.3, diffuse: #imageLiteral(resourceName: "nepture"), specular: nil, emission: nil, normal: nil, position: SCNVector3(uranusNode.position.x + 1, 0, 0))
-        let moonNode = planet(radius: 0.05, diffuse: #imageLiteral(resourceName: "moon"), specular: nil, emission: nil, normal: nil, position: SCNVector3(0.3, 0, 0))
+        setupPlanets()
+        setupPlanetParents()
+        setupPlanetRotationAnimations()
+        setupOrbitAnimations()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
 
-        let mercuryParent = SCNNode()
+        sceneView.session.pause()
+
+        UserDefaults.standard.set(speedSlider.value, forKey: "savedSliderSpeedValue")
+    }
+
+    private func setupPlanets() {
+        sunNode = planet(radius: 0.5, diffuse: #imageLiteral(resourceName: "sun"), specular: nil, emission: nil, normal: nil, position: SCNVector3(0, 0, 0))
+        mercuryNode = planet(radius: 0.1, diffuse: #imageLiteral(resourceName: "mercury"), specular: nil, emission: nil, normal: nil, position: SCNVector3(sunNode.position.x + 1, 0, 0))
+        venusNode = planet(radius: 0.2, diffuse: #imageLiteral(resourceName: "venus"), specular: nil, emission: #imageLiteral(resourceName: "venus atmosphere"), normal: nil, position: SCNVector3(mercuryNode.position.x + 0.5, 0, 0))
+        earthNode = planet(radius: 0.2, diffuse: #imageLiteral(resourceName: "earth daymap"), specular: #imageLiteral(resourceName: "earth specular"), emission: #imageLiteral(resourceName: "earth clouds"), normal: #imageLiteral(resourceName: "earth normal"), position: SCNVector3(venusNode.position.x + 0.6, 0, 0))
+        marsNode = planet(radius: 0.15, diffuse: #imageLiteral(resourceName: "mars"), specular: nil, emission: nil, normal: nil, position: SCNVector3(earthNode.position.x + 0.6, 0, 0))
+        jupiterNode = planet(radius: 0.4, diffuse: #imageLiteral(resourceName: "jupiter"), specular: nil, emission: nil, normal: nil, position: SCNVector3(marsNode.position.x + 0.7, 0, 0))
+        saturnNode = planet(radius: 0.4, diffuse: #imageLiteral(resourceName: "saturn"), specular: nil, emission: nil, normal: nil, position: SCNVector3(jupiterNode.position.x + 1, 0, 0))
+        uranusNode = planet(radius: 0.3, diffuse: #imageLiteral(resourceName: "uranus"), specular: nil, emission: nil, normal: nil, position: SCNVector3(saturnNode.position.x + 1, 0, 0))
+        neptuneNode = planet(radius: 0.3, diffuse: #imageLiteral(resourceName: "nepture"), specular: nil, emission: nil, normal: nil, position: SCNVector3(uranusNode.position.x + 1, 0, 0))
+        moonNode = planet(radius: 0.05, diffuse: #imageLiteral(resourceName: "moon"), specular: nil, emission: nil, normal: nil, position: SCNVector3(0.3, 0, 0))
+    }
+
+    private func setupPlanetParents() {
         mercuryParent.position = SCNVector3(0, 0, 0)
         sceneView.scene.rootNode.addChildNode(mercuryParent)
         mercuryParent.addChildNode(mercuryNode)
 
-        let venusParent = SCNNode()
         venusParent.position = SCNVector3(0, 0, 0)
         sceneView.scene.rootNode.addChildNode(venusParent)
         venusParent.addChildNode(venusNode)
 
-        let earthParent = SCNNode()
         earthParent.position = SCNVector3(0, 0, 0)
         sceneView.scene.rootNode.addChildNode(earthParent)
         earthParent.addChildNode(earthNode)
 
-        let marsParent = SCNNode()
         marsParent.position = SCNVector3(0, 0, 0)
         sceneView.scene.rootNode.addChildNode(marsParent)
         marsParent.addChildNode(marsNode)
 
-        let jupiterParent = SCNNode()
         jupiterParent.position = SCNVector3(0, 0, 0)
         sceneView.scene.rootNode.addChildNode(jupiterParent)
         jupiterParent.addChildNode(jupiterNode)
 
-        let saturnParent = SCNNode()
         saturnParent.position = SCNVector3(0, 0, 0)
         sceneView.scene.rootNode.addChildNode(saturnParent)
         saturnParent.addChildNode(saturnNode)
 
-        let uranusParent = SCNNode()
         uranusParent.position = SCNVector3(0, 0, 0)
         sceneView.scene.rootNode.addChildNode(uranusParent)
         uranusParent.addChildNode(uranusNode)
 
-        let neptuneParent = SCNNode()
         neptuneParent.position = SCNVector3(0, 0, 0)
         sceneView.scene.rootNode.addChildNode(neptuneParent)
         neptuneParent.addChildNode(neptuneNode)
 
-        let moonParent = SCNNode()
         moonParent.position = SCNVector3(0, 0, 0)
         earthNode.addChildNode(moonParent)
         moonParent.addChildNode(moonNode)
@@ -91,7 +143,9 @@ class ViewController: UIViewController {
         sceneView.scene.rootNode.addChildNode(saturnParent)
         sceneView.scene.rootNode.addChildNode(uranusParent)
         sceneView.scene.rootNode.addChildNode(neptuneParent)
+    }
 
+    private func setupPlanetRotationAnimations() {
         sunNode.runAction(rotation(time: 8))
         mercuryNode.runAction(rotation(time: 10))
         venusNode.runAction(rotation(time: 9))
@@ -102,21 +156,19 @@ class ViewController: UIViewController {
         saturnNode.runAction(rotation(time: 5))
         uranusNode.runAction(rotation(time: 6))
         neptuneNode.runAction(rotation(time: 7))
-
-        mercuryParent.runAction(rotation(time: 100))
-        venusParent.runAction(rotation(time: 60))
-        earthParent.runAction(rotation(time: 120))
-        marsParent.runAction(rotation(time: 110))
-        jupiterParent.runAction(rotation(time: 90))
-        saturnParent.runAction(rotation(time: 70))
-        uranusParent.runAction(rotation(time: 80))
-        neptuneParent.runAction(rotation(time: 40))
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
 
-        sceneView.session.pause()
+    private func setupOrbitAnimations() {
+        allParents.forEach({$0.removeAllActions()})
+        guard speedSlider.value > 0 else { return }
+        mercuryParent.runAction(rotation(time: TimeInterval(10 / speedSlider.value)))
+        venusParent.runAction(rotation(time: TimeInterval(6 / speedSlider.value)))
+        earthParent.runAction(rotation(time: TimeInterval(12 / speedSlider.value)))
+        marsParent.runAction(rotation(time: TimeInterval(11 / speedSlider.value)))
+        jupiterParent.runAction(rotation(time: TimeInterval(9 / speedSlider.value)))
+        saturnParent.runAction(rotation(time: TimeInterval(7 / speedSlider.value)))
+        uranusParent.runAction(rotation(time: TimeInterval(8 / speedSlider.value)))
+        neptuneParent.runAction(rotation(time: TimeInterval(4 / speedSlider.value)))
     }
 
     private func rotation(time: TimeInterval) -> SCNAction {
@@ -134,6 +186,11 @@ class ViewController: UIViewController {
         planet.position = position
         return planet
     }
+
+    @IBAction func speedSliderValueDidChange(_ sender: Any) {
+        setupOrbitAnimations()
+    }
+    
 }
 
 extension Int {
